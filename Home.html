@@ -1,0 +1,995 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aurelia's | Where Every Dish Is Golden</title>
+    <style>
+        /* Color Scheme */
+        :root {
+            --primary: #e63946;
+            --secondary: #1d3557;
+            --light: #f1faee;
+            --accent: #a8dadc;
+            --dark: #1a1a1a;
+        }
+
+        /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Header Styles */
+        header {
+            background: var(--secondary);
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo h1 {
+            font-size: 2rem;
+            font-family: 'Georgia', serif;
+            font-weight: bold;
+            font-style: italic;
+        }
+
+        .logo p {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav li {
+            margin-left: 1.5rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: all 0.3s;
+        }
+
+        nav a:hover {
+            background: rgba(255,255,255,0.1);
+        }
+
+        nav a.active {
+            background: var(--primary);
+        }
+
+        /* Hero Section */
+        .hero {
+            background:url('https://scontent.fdur5-1.fna.fbcdn.net/v/t39.30808-6/486414547_122108367062831531_474842291235340318_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=VsekeToICGUQ7kNvwHLa8KJ&_nc_oc=AdlXrIElC-oP_dftl5jk2R-k6m4NGT4If6EyF_XNa1ArrVNSM7-Y9hUJAPhoIlMB2yA&_nc_zt=23&_nc_ht=scontent.fdur5-1.fna&_nc_gid=PSnd8mP8U23aAM6tdOHL4g&oh=00_AfHBeVIbY61Zf8ccsLlF7nLTppCEVAYirlEtOSif-UBxKA&oe=6805AFE0');
+            background-size: cover;
+            background-position: center;
+            height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: rgb(241, 241, 241);
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+        }
+        
+
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 1.5rem;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-weight: bold;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .btn:hover {
+            background: #c1121f;
+            transform: translateY(-3px);
+        }
+
+       
+        
+        /* Event Cards */
+        .event-cards {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            padding: 50px 20px;
+            background-color: #f9f9f9;
+        }
+        
+        .event-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            width: 300px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .event-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .event-image {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .event-details {
+            padding: 20px;
+        }
+        
+        .event-details h3 {
+            margin-top: 0;
+            color: #333;
+        }
+        
+        .event-date {
+            color: #e74c3c;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+        
+        .event-desc {
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        /* Menu Section */
+        .menu-section {
+            padding: 4rem 0;
+        }
+
+        .menu-section h2 {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--secondary);
+        }
+
+        .menu-categories {
+            display: flex;
+            flex-direction: column;
+            gap: 3rem;
+        }
+
+        .category {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .category-header {
+            background: var(--secondary);
+            color: white;
+            padding: 1rem;
+        }
+
+        .category-header h3 {
+            font-size: 1.5rem;
+        }
+
+        .category-header a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 0.9rem;
+            display: inline-block;
+            margin-top: 0.5rem;
+        }
+
+        .menu-items {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+            padding: 1.5rem;
+        }
+
+        .menu-item {
+            border: 1px solid #eee;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+
+        .menu-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .item-img {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .item-details {
+            padding: 1rem;
+        }
+
+        .item-details h4 {
+            margin-bottom: 0.5rem;
+            color: var(--secondary);
+        }
+
+        .item-details p {
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .price {
+            font-weight: bold;
+            color: var(--primary);
+            font-size: 1.1rem;
+        }
+
+        /* Internal Navigation */
+        .category-nav {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .category-nav a {
+            padding: 0.5rem 1rem;
+            background: white;
+            border: 1px solid var(--secondary);
+            border-radius: 30px;
+            color: var(--secondary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+
+        .category-nav a:hover {
+            background: var(--secondary);
+            color: white;
+        }
+
+        /* Awards Section */
+        .awards-section {
+            margin: 40px 0;
+            padding: 30px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .awards-section h2 {
+            text-align: center;
+            color: var(--secondary);
+            margin-bottom: 10px;
+            font-size: 2em;
+        }
+        
+        .section-intro {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #555;
+            font-size: 1.1em;
+        }
+        
+        .awards-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            overflow-x: auto;
+        }
+        
+        .awards-table th {
+            background-color: var(--secondary);
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-weight: 500;
+        }
+        
+        .awards-table td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        
+        .awards-table tr:nth-child(even) {
+            background-color: #f1f1f1;
+        }
+        
+        .awards-table tr:hover {
+            background-color: #e9e9e9;
+        }
+        
+        .award-highlight {
+            color: #c62828;
+            font-weight: bold;
+        }
+        
+        .awards-cta {
+            text-align: center;
+            margin-top: 30px;
+            font-style: italic;
+            color: #555;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--secondary);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 3rem;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .events-hero h1 {
+                font-size: 2rem;
+            }
+            
+            .events-hero p {
+                font-size: 1rem;
+            }
+            
+            .event-cards {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .awards-table th, 
+            .awards-table td {
+                padding: 10px 8px;
+                font-size: 0.9em;
+            }
+            
+            .awards-table td:nth-child(3),
+            .awards-table th:nth-child(3) {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <h1>Aurelia's</h1>
+                <p>Where Every Dish is Golden</p>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="Home.html" class="active">Home</a></li>
+                    <li><a href="Menu.html">Menu</a></li>
+                    <li><a href="About Us.html">About</a></li>
+                    <li><a href="Contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>   
+
+    <section class="hero">
+        <div class="hero-content">
+            
+        </div>
+    </section>
+
+    
+
+    <section id="menu" class="menu-section">
+        <div class="container">
+            
+            </div>
+
+            <!-- family -->
+ <section>
+            <!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Our Bars</title>
+            <style>
+                body {
+                    font-family: 'Arial', sans-serif;
+                    margin: 0;
+                    padding: 0;
+                    background-color: #f5f5f5;
+                }
+                
+                .welcome-section {
+                    text-align: center;
+                    padding: 40px 20px;
+                    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1514933651103-005eec06c04b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+                    background-size: cover;
+                    background-position: center;
+                    color: white;
+                }
+                
+                .welcome-heading {
+                    font-size: 2.5rem;
+                    margin-bottom: 15px;
+                    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+                }
+                
+                .welcome-subheading {
+                    font-size: 1.2rem;
+                    max-width: 800px;
+                    margin: 0 auto;
+                    line-height: 1.6;
+                }
+                
+                .slideshow-container {
+                    max-width: 1000px;
+                    position: relative;
+                    margin: 40px auto;
+                    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+                }
+                
+                .mySlides {
+                    display: none;
+                    width: 100%;
+                }
+                
+                .mySlides img {
+                    width: 100%;
+                    vertical-align: middle;
+                    height: 500px;
+                    object-fit: cover;
+                }
+                
+                .slide-caption {
+                    position: absolute;
+                    bottom: 20px;
+                    left: 0;
+                    right: 0;
+                    background-color: rgba(0,0,0,0.7);
+                    color: white;
+                    padding: 15px;
+                    text-align: center;
+                }
+                
+                .prev, .next {
+                    cursor: pointer;
+                    position: absolute;
+                    top: 50%;
+                    width: auto;
+                    padding: 16px;
+                    margin-top: -22px;
+                    color: white;
+                    font-weight: bold;
+                    font-size: 18px;
+                    transition: 0.6s ease;
+                    border-radius: 0 3px 3px 0;
+                    user-select: none;
+                    background-color: rgba(0,0,0,0.5);
+                }
+                
+                .next {
+                    right: 0;
+                    border-radius: 3px 0 0 3px;
+                }
+                
+                .prev:hover, .next:hover {
+                    background-color: rgba(0,0,0,0.8);
+                }
+                
+                .dot-container {
+                    text-align: center;
+                    padding: 20px;
+                }
+                
+                .dot {
+                    cursor: pointer;
+                    height: 15px;
+                    width: 15px;
+                    margin: 0 2px;
+                    background-color: #bbb;
+                    border-radius: 50%;
+                    display: inline-block;
+                    transition: background-color 0.6s ease;
+                }
+                
+                .active, .dot:hover {
+                    background-color: #717171;
+                }
+                
+                .fade {
+                    animation-name: fade;
+                    animation-duration: 1.5s;
+                }
+                
+                @keyframes fade {
+                    from {opacity: .4} 
+                    to {opacity: 1}
+                }
+                
+                @media only screen and (max-width: 768px) {
+                    .welcome-heading {
+                        font-size: 2rem;
+                    }
+                    
+                    .welcome-subheading {
+                        font-size: 1rem;
+                    }
+                    
+                    .mySlides img {
+                        height: 300px;
+                    }
+                }
+            </style>
+        </head>
+        <body>
+            <section class="welcome-section">
+                <h1 class="welcome-heading">Welcome to Aurelia's</h1>
+                <p class="welcome-subheading">Where Every Dish Is Golden</p>
+            </section>
+            
+            <div class="slideshow-container">
+                <div class="mySlides fade">
+                    <img src="https://i.pinimg.com/736x/db/e8/fa/dbe8fac33fce30410d98d47740cd150c.jpg" alt="Main Bar">
+                    <div class="slide-caption">Our Main Bar - The heart of our cocktail experience</div>
+                </div>
+                
+                <div class="mySlides fade">
+                    <img src="https://images.unsplash.com/photo-1514933651103-005eec06c04b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Whiskey Lounge">
+                    <div class="slide-caption">Whiskey Lounge - Featuring over 200 premium selections</div>
+                </div>
+                
+                <div class="mySlides fade">
+                    <img src="https://i.pinimg.com/736x/c2/40/f8/c240f8ea0a25d1116e1e334b530e4e12.jpg" alt="Luminous Bar">
+                    <div class="slide-caption">Luminous Bar - Stunning views with craft cocktails</div>
+                </div>
+
+                <div class="mySlides fade">
+                    <img src="https://i.pinimg.com/736x/ad/9d/17/ad9d179d29a1c33978878e544f5f9b1f.jpg" alt="Rooftop Bar">
+                    <div class="slide-caption">Desserts - Delicate Confectionaries</div>
+                </div>
+
+                <div class="mySlides fade">
+                    <img src="https://i.pinimg.com/736x/48/eb/b7/48ebb768778944678259f95fbf8e2e67.jpg" alt="Rooftop Bar">
+                    <div class="slide-caption">Dining - At Its Finest</div>
+                </div>
+
+                <div class="mySlides fade">
+                    <img src="https://scontent.fdur5-1.fna.fbcdn.net/v/t39.30808-6/486634206_122111485784831531_8089313327066787546_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=zBMk8MZyL7YQ7kNvwFNab33&_nc_oc=AdkTjNpoDxE9G5fIPezoUwreQH0QW-FnHgebMJtofOqQis4_hgdr_QPyzaqXU3Q7wBk&_nc_zt=23&_nc_ht=scontent.fdur5-1.fna&_nc_gid=i1hmJB3bHb0VLuwyHh1fLw&oh=00_AfHHv8Hf0FI16r38yqRjwsN4WMTnoNo0Nj_BOuMWulzzSw&oe=68075BA5" alt="Rooftop Bar">
+                    <div class="slide-caption">Aurelia's, Our Golden Paradise</div>
+                </div>
+                
+            
+                
+                
+            
+            <div class="dot-container">
+                <span class="dot" onclick="currentSlide(1)"></span> 
+                <span class="dot" onclick="currentSlide(2)"></span> 
+                <span class="dot" onclick="currentSlide(3)"></span> 
+                <span class="dot" onclick="currentSlide(4)"></span> 
+                <span class="dot" onclick="currentSlide(5)"></span> 
+                <span class="dot" onclick="currentSlide(6)"></span> 
+                
+        
+            </div>
+            
+            <script>
+                let slideIndex = 1;
+                showSlides(slideIndex);
+                
+                function plusSlides(n) {
+                    showSlides(slideIndex += n);
+                }
+                
+                function currentSlide(n) {
+                    showSlides(slideIndex = n);
+                }
+                
+                function showSlides(n) {
+                    let i;
+                    let slides = document.getElementsByClassName("mySlides");
+                    let dots = document.getElementsByClassName("dot");
+                    if (n > slides.length) {slideIndex = 1}    
+                    if (n < 1) {slideIndex = slides.length}
+                    for (i = 0; i < slides.length; i++) {
+                        slides[i].style.display = "none";  
+                    }
+                    for (i = 0; i < dots.length; i++) {
+                        dots[i].className = dots[i].className.replace(" active", "");
+                    }
+                    slides[slideIndex-1].style.display = "block";  
+                    dots[slideIndex-1].className += " active";
+                    
+                    // Auto-advance slides every 5 seconds
+                    setTimeout(() => {
+                        plusSlides(1);
+                    }, 5000);
+                }
+            </script>
+        </body>
+        </html>
+</section>
+<section>
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Menu</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+        }
+        
+        .menu-section {
+            text-align: center;
+            padding: 60px 20px;
+            background: linear-gradient(rgba(252, 251, 251, 0.7), rgba(248, 246, 246, 0.7));
+            background-size: cover;
+            background-position: center;
+            color: rgb(0, 0, 0);
+        }
+        
+        .menu-heading {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        
+        .menu-quote {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 40px;
+            font-style: italic;
+            line-height: 1.6;
+        }
+        
+        .menu-button {
+            display: inline-block;
+            padding: 15px 30px;
+            background-color: #223fe6;
+            color: rgb(247, 244, 244);
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            border: none;
+            cursor: pointer;
+        }
+        
+        .menu-button:hover {
+            background-color: #302379;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        }
+        
+        @media (max-width: 768px) {
+            .menu-heading {
+                font-size: 2rem;
+            }
+            
+            .menu-quote {
+                font-size: 1rem;
+                padding: 0 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <section class="menu-section">
+        <h2 class="menu-heading">A Culinary Journey Awaits</h2>
+        <p class="menu-quote">"From farm-fresh ingredients to expertly crafted dishes, our menu tells a story of passion and flavor. Every bite is a celebration of culinary artistry."</p>
+        <a href="menu.html" class="menu-button">Explore Our Menu</a>
+    </section>
+</body>
+</html>
+
+
+</section>
+            <!-- Events -->
+            <!DOCTYPE html>
+            <html lang="en">
+            <head>
+                <meta charset="UTF-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <title>Our Events</title>
+                <style>
+                    body {
+                        margin: 0;
+                        font-family: 'Arial', sans-serif;
+                    }
+                    
+                    .events-hero {
+                        position: relative;
+                        height: 100vh;
+                        background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
+                                    url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center;
+                        background-size: cover;
+                        color: white;
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: center;
+                        align-items: center;
+                        text-align: center;
+                        padding: 0 20px;
+                    }
+                    
+                    .events-hero h1 {
+                        font-size: 3rem;
+                        margin-bottom: 20px;
+                        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+                    }
+                    
+                    .events-hero p {
+                        font-size: 1.2rem;
+                        max-width: 800px;
+                        margin-bottom: 30px;
+                        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+                    }
+                    
+                    .event-cards {
+                        display: flex;
+                        flex-wrap: wrap;
+                        justify-content: center;
+                        gap: 30px;
+                        padding: 50px 20px;
+                        background-color: #f9f9f9;
+                    }
+                    
+                    .event-card {
+                        background: white;
+                        border-radius: 8px;
+                        overflow: hidden;
+                        width: 300px;
+                        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                        transition: transform 0.3s ease;
+                    }
+                    
+                    .event-card:hover {
+                        transform: translateY(-10px);
+                    }
+                    
+                    .event-image {
+                        height: 200px;
+                        background-size: cover;
+                        background-position: center;
+                    }
+                    
+                    .event-details {
+                        padding: 20px;
+                    }
+                    
+                    .event-details h3 {
+                        margin-top: 0;
+                        color: #333;
+                    }
+                    
+                    .event-date {
+                        color: #e74c3c;
+                        font-weight: bold;
+                        margin: 10px 0;
+                    }
+                    
+                    .event-desc {
+                        color: #666;
+                        margin-bottom: 20px;
+                    }
+                    
+                    .btn {
+                        display: inline-block;
+                        padding: 10px 20px;
+                        background: #e74c3c;
+                        color: white;
+                        text-decoration: none;
+                        border-radius: 4px;
+                        transition: background 0.3s;
+                    }
+                    
+                    .btn:hover {
+                        background: #c0392b;
+                    }
+                    
+                    @media (max-width: 768px) {
+                        .events-hero h1 {
+                            font-size: 2rem;
+                        }
+                        
+                        .events-hero p {
+                            font-size: 1rem;
+                        }
+                        
+                        .event-cards {
+                            flex-direction: column;
+                            align-items: center;
+                        }
+                    }
+                </style>
+            </head>
+            <body>
+                <section class="events-hero">
+                    <h1>Upcoming Events</h1>
+                    <p>Join us for unforgettable dining experiences featuring special menus, live entertainment, and seasonal celebrations</p>
+                    <a href="#events" class="btn">View All Events</a>
+                </section>
+                
+                <section class="event-cards" id="events">
+                    <div class="event-card">
+                        <div class="event-image" style="background-image: url('https://images.unsplash.com/photo-1547592180-85f173990554?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
+                        <div class="event-details">
+                            <h3>Wine Pairing Dinner</h3>
+                            <div class="event-date">June 15, 2023 | 7:00 PM</div>
+                            <p class="event-desc">A five-course meal expertly paired with selections from Napa Valley's finest vineyards.</p>
+                            
+                        </div>
+                    </div>
+                    
+                    <div class="event-card">
+                        <div class="event-image" style="background-image: url('https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
+                        <div class="event-details">
+                            <h3>Jazz Brunch</h3>
+                            <div class="event-date">June 18, 2023 | 11:00 AM</div>
+                            <p class="event-desc">Sunday brunch with live jazz quartet and bottomless mimosas.</p>
+                           
+                        </div>
+                    </div>
+                    
+                    <div class="event-card">
+                        <div class="event-image" style="background-image: url('https://images.unsplash.com/photo-1466978913421-dad2ebd01d17?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
+                        <div class="event-details">
+                            <h3>Chef's Tasting Menu</h3>
+                            <div class="event-date">June 22, 2023 | 6:30 PM</div>
+                            <p class="event-desc">An exclusive 7-course tasting menu showcasing seasonal ingredients.</p>
+                            
+                        </div>
+                    </div>
+                    
+                    <div class="event-card">
+                        <div class="event-image" style="background-image: url('https://pyxis.nymag.com/v1/imgs/5e0/b08/1d503198edded52d515aba52670647cf33-cocletera.2x.rhorizontal.w710.jpg');"></div>
+                        <div class="event-details">
+                            <h3>Mixology Class</h3>
+                            <div class="event-date">June 25, 2023 | 5:00 PM</div>
+                            <p class="event-desc">Learn to craft three signature cocktails with our master mixologist.</p>
+                            
+                        </div>
+                    </div>
+                </section>
+            </body>
+            </html>
+        </div>
+    </section>
+
+    <section class="awards-section">
+        <div class="container">
+            <h2>Awards & Recognition</h2>
+            <p class="section-intro">We're honored to have received these prestigious accolades for our culinary excellence and service</p>
+            
+            <table class="awards-table">
+                <thead>
+                    <tr>
+                        <th>Year</th>
+                        <th>Award</th>
+                        <th>Category</th>
+                        <th>Organization</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>2023</td>
+                        <td><span class="award-highlight">Michelin Star</span></td>
+                        <td>Culinary Excellence</td>
+                        <td>Michelin Guide</td>
+                        <td>Awarded for our innovative tasting menu</td>
+                    </tr>
+                    <tr>
+                        <td>2022</td>
+                        <td><span class="award-highlight">Best New Restaurant</span></td>
+                        <td>Overall Excellence</td>
+                        <td>Food & Wine Magazine</td>
+                        <td>Top 10 new restaurants in the country</td>
+                    </tr>
+                    <tr>
+                        <td>2021</td>
+                        <td>Wine Spectator Award</td>
+                        <td>Wine Program</td>
+                        <td>Wine Spectator</td>
+                        <td>Recognized for our exceptional wine selection</td>
+                    </tr>
+                    <tr>
+                        <td>2020</td>
+                        <td>James Beard Nomination</td>
+                        <td>Best Chef: Northeast</td>
+                        <td>James Beard Foundation</td>
+                        <td>Executive Chef recognized for culinary artistry</td>
+                    </tr>
+                    <tr>
+                        <td>2019</td>
+                        <td>AAA Four Diamond</td>
+                        <td>Restaurant</td>
+                        <td>AAA</td>
+                        <td>Consistently exceeding expectations in service and cuisine</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <div class="awards-cta">
+                <p>We're proud of our accomplishments and remain committed to delivering exceptional dining experiences.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Aurelius Restaurant. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="Home.html">Home</a>
+                <a href="Menu.html">Menu</a>
+                <a href="About Us.html">About</a>
+                <a href="Contact.html">Contact</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

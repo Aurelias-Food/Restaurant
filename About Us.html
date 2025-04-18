@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - [Your Restaurant Name]</title>
+    <style>
+         /* Color Scheme */
+         :root {
+            --primary: #e63946;
+            --secondary: #1d3557;
+            --light: #f1faee;
+            --accent: #a8dadc;
+            --dark: #1a1a1a;
+        }
+
+         /* Base Styles */
+         * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Header Styles */
+        header {
+            background: var(--secondary);
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo h1 {
+            font-size: 2rem;
+            font-family: 'Georgia', serif; /* Example font */
+            font-weight: bold;
+            font-style: italic;
+        }
+
+        .logo p {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav li {
+            margin-left: 1.5rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: all 0.3s;
+        }
+
+            nav a:hover {
+                background: rgba(255,255,255,0.1);
+            }
+
+            nav a.active {
+                background: var(--primary);
+            }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://scontent.fdur5-1.fna.fbcdn.net/v/t39.30808-6/492008972_122111945186831531_2180119538715440203_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=cc71e4&_nc_ohc=k67ltKcpdOoQ7kNvwFQ2Xu6&_nc_oc=AdmaAqVp-yGaXvxz1V75o1Hn85RjGxa2Brlzy0Yv4Ux4vwVvRjSfcQL9sAtNvvROz4E&_nc_zt=23&_nc_ht=scontent.fdur5-1.fna&_nc_gid=l7f-TNK8n3Z4HisrZoitTg&oh=00_AfECgvCjwNaJRm7aCDyu-PGgxGxI_Uk8Kqq2pb5oaaUgaA&oe=68071156');
+            background-size: 100%;
+            background-position: top;
+            color: white;
+            text-align: center;
+            padding: 5rem 0;
+        }
+
+            .hero h2 {
+                font-size: 2.5rem;
+                margin-bottom: 1rem;
+            }
+
+            .hero p {
+                font-size: 1.2rem;
+                margin-bottom: 2rem;
+            }
+
+        /* Basic styling - you can customize this further */
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+       /* Header Styles */
+       header {
+            background: var(--secondary);
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+            padding: 20px 0;
+        }
+        section {
+            padding: 30px 0;
+            border-bottom: 1px solid #e1e1e1;
+        }
+        h1 {
+            color: #f3ecec;
+        }
+        h2 {
+            color:#011d42
+        }
+        h3 {
+            color:#0c0c0c
+        }
+        .reviews-section {
+            margin: 40px 0;
+            padding: 30px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+        }
+        
+        .reviews-section h2 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 30px;
+        }
+        
+        .review {
+            padding: 20px;
+            margin-bottom: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .review-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            align-items: center;
+        }
+        .reviewer-name {
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        
+        .review-date {
+            color: #777;
+            font-size: 0.9em;
+        }
+        
+        .rating {
+            color: #f39c12;
+            font-weight: bold;
+            margin: 5px 0;
+        }
+        
+        .review-content {
+            line-height: 1.5;
+        }
+
+        .team {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        .team-member {
+            flex-basis: 30%;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        .item-img {
+            height: 400px;
+            background-size: cover;
+            background-position: center;
+        }
+        .locations {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        .location-card {
+            border: 1px solid #ddd;
+            padding: 15px;
+            border-radius: 5px;
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 20px;
+        }
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+            .footer-links a {
+                color: white;
+                text-decoration: none;
+            }
+
+                .footer-links a:hover {
+                    text-decoration: underline;
+                }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <h1>Aurelia's</h1>
+                <p>Where Every Dish is Golden</p>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="Home.html">Home</a></li>
+                    <li><a href="Menu.html" >Menu</a></li>
+                    <li><a href="About Us.html"class="active">About</a></li>
+                    <li><a href="Contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>   
+</body>
+    
+   
+    <section class="hero">
+        <div class="container">
+            <h1>About Us</h1>
+            <p>Our History, Our Story</p>
+            
+        </div>
+    </section>
+
+    <div class="container">
+        <section id="history">
+            <h2>Our History</h2>
+            <p>Founded in 2009 in Durban,South Africa, Aurelius began as a small family-owned establishment with a passion for North American and Italian cuisines, but later on became a versatile cuisine. What started as a humble local restaurant has grown into a beloved culinary destination known for its golden dishes.</p>
+            
+            <p>Our founder, Marc Ndlovu, envisioned a place where authentic Italian and North American recipes could be shared with the community. Over the years, we've stayed true to our roots while innovating to bring our guests the best dining experience possible.</p>
+            
+            <p>In 2018, we opened our second location in Umhlanga, and since then we've continued to grow while maintaining the quality and service that made us successful from the beginning.</p>
+        </section>
+
+        <section id="Mission statement">
+            <h2>Mission statement</h2>
+            
+            <p>At Aurelius, we are committed to delivering a unique and unforgettable dining experience by combining the finest elements of North American and Italian cuisines with global influences.</p>
+            <p> From our humble beginnings as a family-owned restaurant to becoming a beloved culinary destination, our mission is to bring together diverse flavors, exceptional service, and a warm atmosphere that makes every guest feel like family.</p>
+        </section>
+
+        <section id="core values">
+            <h2>Core Values</h2>
+            <p>Excellence in Flavor: We believe in using only the freshest, high-quality ingredients to create dishes that delight the senses and celebrate diverse culinary traditions.</p>
+            <p>Innovation: We constantly evolve our menu, blending classic and contemporary cooking styles to surprise and satisfy our guests' evolving tastes.</p>
+            <p>Warmth & Hospitality: We treat every guest with respect and care, ensuring they feel welcomed, valued, and part of the Aurelius family.</p>
+            <p>Sustainability: We are committed to sourcing ingredients responsibly and minimizing our environmental impact, ensuring a better future for our community.</p>
+            <p>Community & Family: Rooted in a deep sense of family, we foster strong relationships with both our team and customers, creating a space where everyone feels like they belong.</p>
+        </section>
+
+        <section id="team">
+            <h2>Introducing Our Team</h2>
+            <div class="team">
+                <!-- Founder 1 -->
+                <div class="team-member">
+                    <div class="item-img" style="background-image: url('https://scontent.fdur5-1.fna.fbcdn.net/v/t39.30808-6/491706605_122108365652831531_3076734519130899412_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=a5f93a&_nc_ohc=EtjHTGlhjIEQ7kNvwEOO5vP&_nc_oc=Adn2mm08TWEskfviRl8QCkl1FKoxoR5ttws8RWCF95DM__v0NyGm1z8DBmYax-IfnsA&_nc_zt=23&_nc_ht=scontent.fdur5-1.fna&_nc_gid=aNErIB6vZRygMOorKk4B8w&oh=00_AfG5adEc_3vRD_EyqzCSTZN3lrlbr3p2nlOLIjgMp0aBOg&oe=6803013B');"></div>
+                    <h3>Marc Ndlovu</h3>
+                    <h4>Student Number: 22413246 </h4>
+                    <p><strong>Founder & Executive Chef</strong></p>
+                    <p>With over 10 years of culinary experience, Marc Ndlovu brings his expertise of the North American and Italian cuisines to every dish. He trained at Culinary Institute of America in USA and later furthered his training at Apicius International School of Hospitality in Florence in Italy at before opening Aurelius.</p>
+                </div>
+
+                <!-- Founder 2 (if applicable) -->
+                <div class="team-member">
+                    <div class="item-img" style="background-image: url('https://scontent.fdur5-1.fna.fbcdn.net/v/t39.30808-6/489928589_122108279366831531_6724719531325809184_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=_KkSZjasONQQ7kNvwEYY8CZ&_nc_oc=Adn8zslSKrmrL696HUDSHL3-EHGQ4O8EvAY784H4-huAE-dsYDh6xnRJgPxWyktVOp0&_nc_zt=23&_nc_ht=scontent.fdur5-1.fna&_nc_gid=AeVunSvcqMwtsGi7pYq8uw&oh=00_AfEBuj4rYZnWwQFBC-LsEuDiFy-EsAo-ikGN-Vtm-Do54Q&oe=68030641');"></div>
+                    <h3>Njabulo Molefe</h3>
+                    <h4>Student Number: 22303852 </h4>
+                    <p><strong>Co-Founder & Area Manager</strong></p>
+                    <p>Njabulo Molefe, handles the business operations and ensures every guest receives exceptional service. He oversees multiple restaurant branches in different locations  and ensures each location meets company standards and targets. </p>
+                </div>
+
+                <!-- Head Chef and Sous Chef -->
+                <div class="team-member">
+                    <div class="item-img" style="background-image: url('https://scontent.fdur5-1.fna.fbcdn.net/v/t39.30808-6/487312579_122108282846831531_2842393919746655204_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=a5f93a&_nc_ohc=P4QbLsbgaxcQ7kNvwHPQ0Kc&_nc_oc=AdndHS3AyzqXILFl10eQh6cTTBY2Mq81oNfwqRglxtGGiiMfwyZcQV7LhZRuTJnqunU&_nc_zt=23&_nc_ht=scontent.fdur5-1.fna&_nc_gid=Ym8NARu-CxuZnmjWqfm9Qg&oh=00_AfEwNss-RVykNo1Vf_s_f22OQVpDH99T74Ygr-yyCxmI8g&oe=68031D8C');"></div>
+                    <h3>Mlungisi Nkosi</h3>
+                    <h4>Student Number: 22309950 </h4>
+                    <p><strong>Head Chef and Sous Chef</strong></p>
+                    <p>Joining us in 2013, Mlungisi has elevated our menu with his innovative approach to Italian cuisine. He previously worked at  La Colombe in Cape Town, Constantia and  9th Avenue Waterside in Durban.</p>
+                </div>
+
+                <!-- Chief Operations Officer-->
+                <div class="team-member">
+                    <div class="item-img" style="background-image: url('https://scontent.fdur5-1.fna.fbcdn.net/v/t39.30808-6/491364528_122108286326831531_1486075171423542745_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=a5f93a&_nc_ohc=36SnxTDSHl8Q7kNvwGH29Hg&_nc_oc=AdkOBJ9qcv-fCdYwGzgmuXyarE0yRCBb1WkI8G1HVfQ9cCO5gdNCrbcJlHC_WUoQ2Zc&_nc_zt=23&_nc_ht=scontent.fdur5-1.fna&_nc_gid=PcgsRxHyOxjpFgWLYbXENw&oh=00_AfFniw3NhLYpFXexLZlsimB0Gmj7ANNQJuFSOPNJe3SkRA&oe=6802FE0C');"></div>
+                    <h3>Olwethu Jozela</h3>
+                    <h4>Student Number: 22420060 </h4>
+                    <p><strong>Chief Operations Officer</strong></p>
+                    <p>Jozela, he's our engine that keeps the restaurant group running smoothly, ensuring every location delivers excellence daily. Been leading teams, streamlining operations, and turning strategies into action with energy and precision. Focused on consistency, quality, and growth, he transforms big goals into real results across the entire business.</p>
+                </div>
+
+                 <!-- Chief Financial Officer (CFO) -->
+                 <div class="team-member">
+                    <div class="item-img" style="background-image: url('https://scontent.fdur5-1.fna.fbcdn.net/v/t39.30808-6/490320418_122108280824831531_2490736896171983469_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=a5f93a&_nc_ohc=BFuW52SbXDMQ7kNvwFlPlCL&_nc_oc=Adn045QyboUVSJCdTO3hCAWVlaKyD1DGqYNA_i2cWZ4EkHXozeffhrz4QIHRvfYSTcw&_nc_zt=23&_nc_ht=scontent.fdur5-1.fna&_nc_gid=vYeeXdt4pzgPTclA4q_ECg&oh=00_AfERMnBCh4WGByHCMwdUiqDUgkZp7CHAiaM4ujOzx0F7eg&oe=680317C4');"></div>
+                    <h3>Sibahle Makhaye</h3>
+                    <h4>Student Number: 22231823 </h4>
+                    <p><strong>Chief Financial Officer</strong></p>
+                    <p> He's our financial heartbeat of the restaurant group, turns numbers into smart strategies that drive success. Since the beginning of our brand he's been leading  budgets, forecasting, and financial planning with precision, ensuring every cent fuels growth. With a sharp eye and big-picture vision,our CFO keeps the business thriving, profitable, and ready for what's next.</p>
+                </div>
+
+                <!-- Human Resources Manager-->
+                <div class="team-member">
+                    <div class="item-img" style="background-image: url('https://scontent.fdur5-1.fna.fbcdn.net/v/t39.30808-6/490102996_122108284838831531_7452933843079032124_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=a5f93a&_nc_ohc=QVEhn4FGkF8Q7kNvwEAY1OV&_nc_oc=Admffx4NWKbA3eAa7Im6SHSI7RVBwD3IkArU6GAdmNivFQtp8Fg3qwvL5l5EAzp0p1o&_nc_zt=23&_nc_ht=scontent.fdur5-1.fna&_nc_gid=uH6k1_zjjlH4qjyOtPLmQw&oh=00_AfFOgpcG-6F5hg2pP-djG1fqOJGwaMPNbO4lI0I0Ny3YYA&oe=6802F198');"></div>
+                    <h3>Siyanda Dlamuka</h3>
+                    <h4>Student Number: 22414341 </h4>
+                    <p><strong>Human Resources Manager</strong></p>
+                    <p>Ziyanda is the people's champion, she has created a supportive and high-performing work environment across all locations. From hiring top talent to fostering growth and handling employee needs, she's been keeping the team motivated and thriving. Her goal is simple: happy staff, happy customers</p>
+                </div>
+
+                <!-- Lead Bartender-->
+                <div class="team-member">
+                    <div class="item-img" style="background-image: url('https://scontent.fdur5-1.fna.fbcdn.net/v/t39.30808-6/489130282_122108284208831531_1869110343640085364_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=a5f93a&_nc_ohc=t9_6n_s4FXYQ7kNvwE2auVw&_nc_oc=Adm59yZ0i1H3xtw4GmIVHbhWnE3ppFihZxd2-xyy15-VK0s6u2VPh8dwXzovpbGY_Ik&_nc_zt=23&_nc_ht=scontent.fdur5-1.fna&_nc_gid=S5enSH_Qf6fZUUlKp5yelQ&oh=00_AfGHamSa67GRUhdE_Mwj6qZG0QwpYhtfJahMceDwgCIQJA&oe=680312E1');"></div>
+                    <h3>Sifiso Mthiyane</h3>
+                    <h4>Student Number: 21915089</h4>
+                    <p><strong>Public Relations Manager</strong></p>
+                    <p> Sifiso is the voice of the brand, sharing its story with charm, elegance, and purpose. They build meaningful connections with media, influencers, and the community, ensuring Aurelius shines in the spotlight it deserves. Through events, press releases, and powerful storytelling, they turn the restaurant’s golden reputation into a glowing legacy. </p>
+                </div>
+
+                <!-- Marketing Manger-->
+                <div class="team-member">
+                    <div class="item-img" style="background-image: url('https://scontent.fdur5-1.fna.fbcdn.net/v/t39.30808-6/491150979_122108285300831531_5637597388693673223_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=a5f93a&_nc_ohc=VGbdN1Iv7OsQ7kNvwGCe13p&_nc_oc=Adk325Z7o06oTSYJ1xmz0wYrW31jcmarihuzZpYeNi6wuOaNXw52aiddeFFtcWSWOdU&_nc_zt=23&_nc_ht=scontent.fdur5-1.fna&_nc_gid=AnihtPkhTfX2bM-7j96f_w&oh=00_AfFf1hctrr-FUIcTY74p8Hvx8ZwdQt2gq6vjThtHSdLLKA&oe=6802EEEF');"></div>
+                    <h3>Ntando Mdunge</h3>
+                    <h4>Student Number: 2240073</h4>
+                    <p><strong>Marketing Manager</strong></p>
+                    <p>He's the storyteller who brings the restaurant's unique charm to life. He crafts innovative campaigns that highlight the restaurant's versatile cuisine and golden dishes, ensuring every guest feels the allure before they even walk in. With a keen sense of trends and a deep love for the brand, he keeps Aurelius top-of-mind, creating buzz and excitement that keeps customers coming back for more.</p>
+                </div>
+
+                <!-- Procument Manager-->
+                <div class="team-member">
+                    <div class="item-img" style="background-image: url('https://scontent.fdur5-1.fna.fbcdn.net/v/t39.30808-6/490085166_122108281526831531_1278561162299720283_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=a5f93a&_nc_ohc=YntPhliZ5owQ7kNvwGJTUun&_nc_oc=AdkbKCmdJniMd_JgFWCxAB9NA01EW7A8UVKzUJ9moykd0l7MXSy98F7nDVtLuaz7oWg&_nc_zt=23&_nc_ht=scontent.fdur5-1.fna&_nc_gid=IZQNGtyDQN5wVJ3R44L-Lg&oh=00_AfHZQbuCyw8G-KWK4aCUWPCUrn7Rj3HTrdLTEH5C2Iufvw&oe=6802FF50');"></div>
+                    <h3>Thabiso Gabela</h3>
+                    <h4>Student Number: 22408030</h4>
+                    <p><strong>Procument Manager</strong></p>
+                     <p>At Aurelius, the Procurement Manager is the unsung hero who ensures every dish is crafted with the finest ingredients. With a sharp eye for quality and a knack for building strong supplier relationships, he guarantees that only the best makes it into the kitchen. Their attention to detail and dedication to excellence help brings Aurelius' golden dishes to life, one perfectly sourced ingredient at a time. </p>
+                </div>
+
+                <!-- Head Chef -->
+                <div class="team-member">
+                    <div class="item-img" style="background-image: url('https://scontent.fdur5-1.fna.fbcdn.net/v/t39.30808-6/489910832_122108283590831531_5563815508136544947_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=a5f93a&_nc_ohc=GX9xB5XcDEsQ7kNvwFNPVwj&_nc_oc=AdlsfxcG8iGh5hyZj8zV8iJSfwdvTbHH81F7ycCMeA03Gke94uvXnXDRsLlyDHk5Bxs&_nc_zt=23&_nc_ht=scontent.fdur5-1.fna&_nc_gid=YFmc5UK6npiJYrtlWBkCfg&oh=00_AfFugRx_lfle6zdXMZUtNZ67r_3L3ySF0KFv7KPz8CQdqg&oe=6802EC47');"></div>
+                    <h3>Amahle Dunge</h3>
+                    <h4>Student Number: 22333852</h4>
+                    <p><strong>Lead Bartender</strong></p>
+                    <p>Amahle the charismatic artisan, he's been creating signature cocktails that complement the restaurant's rich flavors and golden dishes. With a flair for mixology, his craft beverages are as unforgettable as the dining experience itself, delighting guests with every pour. The creativity and passion he has for each craft ensures that each drink is a masterpiece, elevating the atmosphere of this beloved culinary destination.</p>
+                </div>
+
+
+            </div>
+        </section>
+        <section id="Reviews">
+            <section class="reviews-section">
+                <h2>What Our Customers Say</h2>
+                
+                <div class="review">
+                    <div class="review-header">
+                        <span class="reviewer-name">Sarah Johnson</span>
+                        <span class="review-date">June 15, 2023</span>
+                    </div>
+                    <div class="rating">★★★★★ (5/5)</div>
+                    <div class="review-content">
+                        "The Italian Wine Night was absolutely fantastic! The food was exquisite and the wine pairings were perfect. Will definitely be coming back for more events!"
+                    </div>
+                </div>
+                <div class="review">
+                    <div class="review-header">
+                        <span class="reviewer-name">Michael Chen</span>
+                        <span class="review-date">May 28, 2023</span>
+                    </div>
+                    <div class="rating">★★★★☆ (4/5)</div>
+                    <div class="review-content">
+                        "Wonderful dining experience with excellent service. The Jazz Night had a great atmosphere, though the music was a bit loud for conversation at times."
+                    </div>
+                </div>
+                
+                <div class="review">
+                    <div class="review-header">
+                        <span class="reviewer-name">Emily Rodriguez</span>
+                        <span class="review-date">May 10, 2023</span>
+                    </div>
+                    <div class="rating">★★★★★ (5/5)</div>
+                    <div class="review-content">
+                        "Celebrated our anniversary here and it was magical! The staff went above and beyond to make our evening special. The tasting menu was incredible."
+                    </div>
+                </div>
+                <div class="review">
+                    <div class="review-header">
+                        <span class="reviewer-name">David Kim</span>
+                        <span class="review-date">April 22, 2023</span>
+                    </div>
+                    <div class="rating">★★★☆☆ (3/5)</div>
+                    <div class="review-content">
+                        "Good food and nice ambiance, but the service was a bit slow during the busy dinner hour. Would recommend making reservations for peak times."
+                    </div>
+                </div>
+                
+                <div class="review">
+                    <div class="review-header">
+                        <span class="reviewer-name">Jessica Williams</span>
+                        <span class="review-date">April 5, 2023</span>
+                    </div>
+                    <div class="rating">★★★★★ (5/5)</div>
+                    <div class="review-content">
+                        "Hands down the best restaurant in town! Every dish we've tried has been perfection. The chef's special events are always worth attending."
+                    </div>
+                </div>
+        
+
+        </section>
+
+        
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Aurelius Restaurant. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="Home.html">Home</a>
+                <a href="Menu.html">Menu</a>
+                <a href="About Us.html">About</a>
+                <a href="Contact.html">Contact</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

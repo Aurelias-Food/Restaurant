@@ -1,0 +1,533 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aurelius | Fast Food Marketing</title>
+    <style>
+        /* Color Scheme */
+        :root {
+            --primary: #e63946;
+            --secondary: #1d3557;
+            --light: #f1faee;
+            --accent: #a8dadc;
+            --dark: #1a1a1a;
+        }
+
+        /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Header Styles */
+        header {
+            background: var(--secondary);
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo h1 {
+            font-size: 2rem;
+            font-family: 'Georgia', serif; /* Example font */
+            font-weight: bold;
+            font-style: italic;
+        }
+
+        .logo p {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav li {
+            margin-left: 1.5rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: all 0.3s;
+        }
+
+            nav a:hover {
+                background: rgba(255,255,255,0.1);
+            }
+
+            nav a.active {
+                background: var(--primary);
+            }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://i.pinimg.com/736x/eb/42/7a/eb427a142f6971ba5028deac2028d685.jpg');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 5rem 0;
+        }
+
+            .hero h2 {
+                font-size: 2.5rem;
+                margin-bottom: 1rem;
+            }
+
+            .hero p {
+                font-size: 1.2rem;
+                margin-bottom: 2rem;
+            }
+
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 1.5rem;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-weight: bold;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+            .btn:hover {
+                background: #c1121f;
+                transform: translateY(-3px);
+            }
+
+        /* Menu Section */
+        .menu-section {
+            padding: 4rem 0;
+        }
+
+            .menu-section h2 {
+                text-align: center;
+                margin-bottom: 3rem;
+                color: var(--secondary);
+            }
+
+        .menu-categories {
+            display: flex;
+            flex-direction: column;
+            gap: 3rem;
+        }
+
+        .category {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .category-header {
+            background: var(--secondary);
+            color: white;
+            padding: 1rem;
+        }
+
+            .category-header h3 {
+                font-size: 1.5rem;
+            }
+
+            .category-header a {
+                color: var(--accent);
+                text-decoration: none;
+                font-size: 0.9rem;
+                display: inline-block;
+                margin-top: 0.5rem;
+            }
+
+        .menu-items {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+            padding: 1.5rem;
+        }
+
+        .menu-item {
+            border: 1px solid #eee;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+
+            .menu-item:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            }
+
+        .item-img {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .item-details {
+            padding: 1rem;
+        }
+
+            .item-details h4 {
+                margin-bottom: 0.5rem;
+                color: var(--secondary);
+            }
+
+            .item-details p {
+                margin-bottom: 0.5rem;
+                font-size: 0.9rem;
+                color: #666;
+            }
+
+        .price {
+            font-weight: bold;
+            color: var(--primary);
+            font-size: 1.1rem;
+        }
+
+        /* Internal Navigation */
+        .category-nav {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+            .category-nav a {
+                padding: 0.5rem 1rem;
+                background: white;
+                border: 1px solid var(--secondary);
+                border-radius: 30px;
+                color: var(--secondary);
+                text-decoration: none;
+                font-weight: 500;
+                transition: all 0.3s;
+            }
+
+                .category-nav a:hover {
+                    background: var(--secondary);
+                    color: white;
+                }
+
+        /* Footer */
+        footer {
+            background: var(--secondary);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 3rem;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+            .footer-links a {
+                color: white;
+                text-decoration: none;
+            }
+
+                .footer-links a:hover {
+                    text-decoration: underline;
+                }
+    </style>
+</head>
+<body>
+    
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <h1>Aurelia's</h1>
+                <p>Where Every Dish Is Golden</p>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="Home.html">Home</a></li>
+                    <li><a href="Menu" class="active">Menu</a></li>
+                    <li><a href="About Us.html">About</a></li>
+                    <li><a href="Contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>   
+
+   
+    <section class="hero">
+        <div class="container">
+            <h2>"Where Every Dish is Golden"</h2>
+            
+            <a href="#menu" class="btn">View Our Menu</a>
+        </div>
+    </section>
+
+    
+    <section id="menu" class="menu-section">
+        <div class="container">
+            <h2>Our Menu Categories</h2>
+
+            
+            <div class="category-nav">
+                <a href="#steak">steak Meals</a>
+                <a href="#pizza">Pizza</a>
+                <a href="#pasta">Pasta</a>
+                <a href="#burgers">Burger Meals</a>
+                <a href="#deserts">Deserts</a>
+                <a href="#drinks">Drinks & Beverages</a>
+            </div>
+
+            <div class="menu-categories">
+                
+                <div id="steak" class="category">
+                    <div class="category-header">
+                        <h3>Steak Meals</h3>
+                        <a href="#menu">Back to top ↑</a>
+                    </div>
+                    <div class="menu-items">
+                        <div class="menu-item">
+                            <div class="item-img" style="background-image: url('https://images.unsplash.com/photo-1603360946369-dc9bb6258143');"></div>
+                            <div class="item-details">
+                                <h4>Classic Ribeye</h4>
+                                <p>12oz ribeye with mashed potatoes and vegetables</p>
+                                <p class="price">R380</p>
+                            </div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-img" style="background-image: url('https://i.pinimg.com/736x/c6/e4/ec/c6e4ec9a0e4ea8551fac129a6bbe982e.jpg');"></div>
+                            <div class="item-details">
+                                <h4>Sirloin Special</h4>
+                                <p>10oz sirloin with fries and salad</p>
+                                <p class="price">R200</p>
+                            </div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-img" style="background-image: url('https://images.unsplash.com/photo-1604909052743-94e838986d24');"></div>
+                            <div class="item-details">
+                                <h4>Filet Mignon</h4>
+                                <p>8oz tender filet with roasted potatoes</p>
+                                <p class="price">R200</p>
+                            </div>
+                        </div>
+                        <div> <a href="Meals.html" class="btn">More</a></div>
+                    </div>
+                </div>
+
+                <!-- Pizza -->
+                <div id="pizza" class="category">
+                    <div class="category-header">
+                        <h3>Pizza</h3>
+                        <a href="#menu">Back to top ↑</a>
+                    </div>
+                    <div class="menu-items">
+                        <div class="menu-item">
+                            <div class="item-img" style="background-image: url('https://images.unsplash.com/photo-1513104890138-7c749659a591');"></div>
+                            <div class="item-details">
+                                <h4>Margherita</h4>
+                                <p>Classic tomato, mozzarella and basil</p>
+                                <p class="price">R90</p>
+                            </div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-img" style="background-image: url('https://images.unsplash.com/photo-1565299624946-b28f40a0ae38');"></div>
+                            <div class="item-details">
+                                <h4>Pepperoni</h4>
+                                <p>Tomato sauce, mozzarella and pepperoni</p>
+                                <p class="price">R110</p>
+                            </div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-img" style="background-image: url('https://images.unsplash.com/photo-1595854341625-f33ee10dbf94');"></div>
+                            <div class="item-details">
+                                <h4>Vegetarian</h4>
+                                <p>Mixed vegetables and mozzarella</p>
+                                <p class="price">R75</p>
+                            </div>
+                        </div>
+                        <div> <a href="Meals.html" class="btn">More</a></div>
+                    </div>
+                </div>
+
+                <!-- Pasta -->
+                <div id="pasta" class="category">
+                    <div class="category-header">
+                        <h3>Pasta</h3>
+                        <a href="#menu">Back to top ↑</a>
+                    </div>
+                    <div class="menu-items">
+                        <div class="menu-item">
+                            <div class="item-img" style="background-image: url('https://images.unsplash.com/photo-1555949258-eb67b1ef0ceb');"></div>
+                            <div class="item-details">
+                                <h4>Spaghetti Bolognese</h4>
+                                <p>Classic meat sauce with spaghetti</p>
+                                <p class="price">R80</p>
+                            </div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-img" style="background-image: url('https://i.pinimg.com/736x/9c/41/e9/9c41e988a1b75ce0620d48b0b156cd23.jpg');"></div>
+                            <div class="item-details">
+                                <h4>Fettuccine Alfredo</h4>
+                                <p>Creamy parmesan sauce with fettuccine</p>
+                                <p class="price">R70</p>
+                            </div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-img" style="background-image: url('https://i.pinimg.com/736x/9a/21/f9/9a21f9d0615820377f9082c9f8d96dec.jpg');"></div>
+                            <div class="item-details">
+                                <h4>Penne Arrabbiata</h4>
+                                <p>Spicy tomato sauce with penne</p>
+                                <p class="price">R100</p>
+                            </div>
+                        </div>
+                        <div> <a href="Meals.html" class="btn">More</a></div>
+                    </div>
+                </div>
+
+                <!-- Burgers -->
+                <div id="burgers" class="category">
+                    <div class="category-header">
+                        <h3>Burger Meals</h3>
+                        <a href="#menu">Back to top ↑</a>
+                    </div>
+                    <div class="menu-items">
+                        <div class="menu-item">
+                            <div class="item-img" style="background-image: url('https://images.unsplash.com/photo-1568901346375-23c9450c58cd');"></div>
+                            <div class="item-details">
+                                <h4>Classic Cheeseburger</h4>
+                                <p>Beef patty with cheese, lettuce and tomato</p>
+                                <p class="price">R45</p>
+                            </div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-img" style="background-image: url('https://images.unsplash.com/photo-1553979459-d2229ba7433b');"></div>
+                            <div class="item-details">
+                                <h4>Bacon Burger</h4>
+                                <p>Beef patty with bacon and cheddar</p>
+                                <p class="price">R70</p>
+                            </div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-img" style="background-image: url('https://images.unsplash.com/photo-1607013251379-e6eecfffe234');"></div>
+                            <div class="item-details">
+                                <h4>Mushroom Swiss</h4>
+                                <p>Beef patty with mushrooms and swiss cheese</p>
+                                <p class="price">R95</p>
+                            </div>
+                        </div>
+                        <div> <a href="Meals.html" class="btn">More</a></div>
+                    </div>
+                </div>
+
+                <div id="deserts" class="category">
+                    <div class="category-header">
+                        <h3>Desserts</h3>
+                        <a href="#menu">Back to top ↑</a>
+                    </div>
+                    <div class="menu-items">
+                        <div class="menu-item">
+                            <div class="item-img" style="background-image: url('https://i.pinimg.com/736x/4e/3b/74/4e3b747165070b84bee1f895726ed9f0.jpg');"></div>
+                            <div class="item-details">
+                                <h4>Ice Cream</h4>
+                                <p>Features a Great range of Ice Creams</p>
+                                <p class="price">R40</p>
+                            </div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-img" style="background-image: url('https://i.pinimg.com/736x/66/5c/41/665c41421e15e9bd3adb696068376344.jpg');"></div>
+                            <div class="item-details">
+                                <h4>Cakes</h4>
+                                <p>Cakes that will Lift your Spirit Everytime</p>
+                                <p class="price">R35</p>
+                            </div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-img" style="background-image: url('https://i.pinimg.com/736x/93/39/2e/93392e893c730fd1b02ad55171cf5c03.jpg');"></div>
+                            <div class="item-details">
+                                <h4>Guilty Pleasures</h4>
+                                <p>Deserts you will love no matter the time or place</p>
+                                <p class="price">R50</p>
+                            </div>
+                        </div>
+                        <div> <a href="Deserts.html" class="btn">More</a></div>
+                    </div>
+                </div>
+
+                
+                <div id="drinks" class="category">
+                    <div class="category-header">
+                        <h3>Drinks & Beverages</h3>
+                        <a href="#menu">Back to top ↑</a>
+                    </div>
+                    <div class="menu-items">
+                        <div class="menu-item">
+                            <div class="item-img" style="background-image: url('https://i.pinimg.com/736x/3b/20/07/3b2007d121f8d045f40eb08b3d33f261.jpg');"></div>
+                            <div class="item-details">
+                                <h4>Soft Drinks</h4>
+                                <p>Coke, Sprite, Fanta, etc.</p>
+                            </div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-img" style="background-image: url('https://images.unsplash.com/photo-1517701550927-30cf4ba1dba5');"></div>
+                            <div class="item-details">
+                                <h4>Milkshakes</h4>
+                                <p>Chocolate, vanilla, strawberry</p>
+                            </div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-img" style="background-image: url('https://images.unsplash.com/photo-1436076863939-06870fe779c2');"></div>
+                            <div class="item-details">
+                                <h4>Cocktails</h4>
+                                <p>Various alcoholic beverages</p>
+                            </div>
+                        </div>
+                        <div> <a href="Drinks & Baverages.html" class="btn">More</a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Aurelius Restaurant. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="index.html">Home</a>
+                <a href="#menu">Menu</a>
+                <a href="about Us.html">About</a>
+                <a href="contact.html">Contact</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

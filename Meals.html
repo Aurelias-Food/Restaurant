@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aurelia's | Where Every Dish Is Golden</title>
+    <style>
+        /* Color Scheme */
+        :root {
+            --primary: #e63946;
+            --secondary: #1d3557;
+            --light: #f1faee;
+            --accent: #a8dadc;
+            --dark: #1a1a1a;
+        }
+
+        /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Header Styles */
+        header {
+            background: var(--secondary);
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo h1 {
+            font-size: 2rem;
+            font-family: 'Georgia', serif; /* Example font */
+            font-weight: bold;
+            font-style: italic;
+        }
+
+        .logo p {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav li {
+            margin-left: 1.5rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: all 0.3s;
+        }
+
+            nav a:hover {
+                background: rgba(255,255,255,0.1);
+            }
+
+            nav a.active {
+                background: var(--primary);
+            }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://i.pinimg.com/736x/93/60/f7/9360f70c9ecc7b88fd7964438723c57e.jpg');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 5rem 0;
+        }
+
+            .hero h2 {
+                font-size: 2.5rem;
+                margin-bottom: 1rem;
+            }
+
+            .hero p {
+                font-size: 1.2rem;
+                margin-bottom: 2rem;
+            }
+
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 1.5rem;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-weight: bold;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+            .btn:hover {
+                background: #c1121f;
+                transform: translateY(-3px);
+            }
+
+        /* Menu Section */
+        .menu-section {
+            padding: 4rem 0;
+        }
+
+            .menu-section h2 {
+                text-align: center;
+                margin-bottom: 3rem;
+                color: var(--secondary);
+            }
+
+        .menu-categories {
+            display: flex;
+            flex-direction: column;
+            gap: 3rem;
+        }
+
+        .category {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .category-header {
+            background: var(--secondary);
+            color: white;
+            padding: 1rem;
+        }
+
+            .category-header h3 {
+                font-size: 1.5rem;
+            }
+
+            .category-header a {
+                color: var(--accent);
+                text-decoration: none;
+                font-size: 0.9rem;
+                display: inline-block;
+                margin-top: 0.5rem;
+            }
+
+        .menu-items {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+            padding: 1.5rem;
+        }
+
+        .menu-item {
+            border: 1px solid #eee;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+
+            .menu-item:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            }
+
+        .item-img {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .item-details {
+            padding: 1rem;
+        }
+
+            .item-details h4 {
+                margin-bottom: 0.5rem;
+                color: var(--secondary);
+            }
+
+            .item-details p {
+                margin-bottom: 0.5rem;
+                font-size: 0.9rem;
+                color: #666;
+            }
+
+        .price {
+            font-weight: bold;
+            color: var(--primary);
+            font-size: 1.1rem;
+        }
+
+        /* Internal Navigation */
+        .category-nav {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+            .category-nav a {
+                padding: 0.5rem 1rem;
+                background: white;
+                border: 1px solid var(--secondary);
+                border-radius: 30px;
+                color: var(--secondary);
+                text-decoration: none;
+                font-weight: 500;
+                transition: all 0.3s;
+            }
+
+                .category-nav a:hover {
+                    background: var(--secondary);
+                    color: white;
+                }
+
+        /* Footer */
+        footer {
+            background: var(--secondary);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 3rem;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+            .footer-links a {
+                color: white;
+                text-decoration: none;
+            }
+
+                .footer-links a:hover {
+                    text-decoration: underline;
+                }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <h1>Aurelia's</h1>
+                <p>Where Every Dish is Golden</p>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="Menu.html">Menu</a></li>
+                    <li><a href="Meals.html" class="active">Meals</a></li>
+                    <li><a href="Deserts.html">Deserts</a></li>
+                    <li><a href="Drinks & Baverages.html">Drinks & Baverages</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>   
+</body>
+
+<section id="menu" class="menu-section">
+    <div class="container">
+        <h2>Our Meal Categories</h2>
+
+        
+        <div class="category-nav">
+            <a href="#steak">steak Meals</a>
+            <a href="#pizza">Pizza</a>
+            <a href="#pasta">Pasta</a>
+            <a href="#burgers">Burger Meals</a>
+        </div>
+
+        <div class="menu-categories">
+            
+            <div id="steak" class="category">
+                <div class="category-header">
+                    <h3>Steak Meals</h3>
+                    <a href="#menu">Back to top ↑</a>
+                </div>
+                <div class="menu-items">
+                    <div class="menu-item">
+                        <div class="item-img" style="background-image: url('https://i.pinimg.com/736x/ae/1e/42/ae1e4220aa2fdfe66ffd9fbaabdfb003.jpg');"></div>
+                        <div class="item-details">
+                            <h4>Ribeye</h4>
+                            <p>Herb Butter Basted Cast Iron Steak</p>
+                            <p class="price">R100</p>
+                        </div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-img" style="background-image: url('https://i.pinimg.com/736x/88/ac/0a/88ac0ab1a8509d31f6da0a01727bf03b.jpg');"></div>
+                        <div class="item-details">
+                            <h4>Garlic Butter Steak</h4>
+                            <p>Garlic Butter Steak Bites with Crispy Cheddar Smashed Potatoes</p>
+                            <p class="price">R150</p>
+                        </div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-img" style="background-image: url('https://i.pinimg.com/736x/a3/91/87/a3918703cfc41ae981917b5afb2168d7.jpg');"></div>
+                        <div class="item-details">
+                            <h4>Tomahawk Steak</h4>
+                            <p>Tomahawk Steak, Garlic Mashed Potatoes and Creamed Spinach</p>
+                            <p class="price">R200</p>
+                        </div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-img" style="background-image: url('https://i.pinimg.com/736x/4e/34/82/4e34824a6eff418b0e330568cc4a36a1.jpg');"></div>
+                        <div class="item-details">
+                            <h4>Savory Steak</h4>
+                            <p>Savory Steak Bites and Shrimp in Garlic Butter Soy Glaze Recipe</p>
+                            <p class="price">R200</p>
+                        </div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-img" style="background-image: url('https://i.pinimg.com/736x/83/6c/7a/836c7a7e65576000c523b8f6399290fb.jpg');"></div>
+                        <div class="item-details">
+                            <h4>Ribs</h4>
+                            <p>Smoked Beef Ribs</p>
+                            <p class="price">R200</p>
+                        </div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-img" style="background-image: url('https://i.pinimg.com/736x/22/c1/66/22c1664eaa53b6e1c88e65598b1e1808.jpg');"></div>
+                        <div class="item-details">
+                            <h4>Brisket</h4>
+                            <p>Smoked Brisket with Baked Potatoes</p>
+                            <p class="price">R200</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pizza -->
+            <div id="pizza" class="category">
+                <div class="category-header">
+                    <h3>Pizza</h3>
+                    <a href="#menu">Back to top ↑</a>
+                </div>
+                <div class="menu-items">
+                    <div class="menu-item">
+                        <div class="item-img" style="background-image: url('https://i.pinimg.com/736x/59/19/67/5919675fba1e1c7a5488d37b6dffdaf9.jpg');"></div>
+                        <div class="item-details">
+                            <h4>Classic Fussion</h4>
+                            <p>Giant Burger-Pizza with Meat, Cheese, and Bacon Slices</p>
+                            <p class="price">R90</p>
+                        </div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-img" style="background-image: url('https://i.pinimg.com/736x/05/c5/74/05c574e75f98367b7bf91709a3fd43a0.jpg');"></div>
+                        <div class="item-details">
+                            <h4>Neopolitan</h4>
+                            <p>Neopolitan Pizza with Black Olives, Green Olives, and Brown Meat</p>
+                            <p class="price">R110</p>
+                        </div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-img" style="background-image: url('https://i.pinimg.com/736x/85/fa/2c/85fa2cdf9453e2ea7142e1330e7ce0c2.jpg');"></div>
+                        <div class="item-details">
+                            <h4>Love and Lemons</h4>
+                            <p>Vegetarian Pizza with Red Peppers, Red Onions, Mozzarella, Cheddar, and Asiago Cheese</p>
+                            <p class="price">R75</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pasta -->
+            <div id="pasta" class="category">
+                <div class="category-header">
+                    <h3>Pasta</h3>
+                    <a href="#menu">Back to top ↑</a>
+                </div>
+                <div class="menu-items">
+                    <div class="menu-item">
+                        <div class="item-img" style="background-image: url('https://i.pinimg.com/736x/10/ff/7c/10ff7c30a9e983a3df9da4ea6e4b8df0.jpg');"></div>
+                        <div class="item-details">
+                            <h4>Cheezy Taco Pasta</h4>
+                            <p>Taco Pasta made with Pasta Shells, Ground Beef, Cheese, and Taco Seasonings</p>
+                            <p class="price">R55</p>
+                        </div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-img" style="background-image: url('https://i.pinimg.com/736x/79/4c/b1/794cb136c4514981ff175bcd1781f608.jpg');"></div>
+                        <div class="item-details">
+                            <h4>Jeck Shrimp Pasta</h4>
+                            <p>Pasta with Jeck Spice, Shrimp, and Stalk Scallions</p>
+                            <p class="price">R70</p>
+                        </div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-img" style="background-image: url('https://i.pinimg.com/736x/e7/d1/08/e7d108acf6282759463ee53c5cc70333.jpg');"></div>
+                        <div class="item-details">
+                            <h4>Lazagna Bolognese</h4>
+                            <p>Lazagna with 34oz Ground Beef, Parsley, Italian Seasoning Blend, and Fresh Mozzarella Cheese </p>
+                            <p class="price">R100</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Burgers -->
+            <div id="burgers" class="category">
+                <div class="category-header">
+                    <h3>Burger Meals</h3>
+                    <a href="#menu">Back to top ↑</a>
+                </div>
+                <div class="menu-items">
+                    <div class="menu-item">
+                        <div class="item-img" style="background-image: url('https://i.pinimg.com/736x/14/41/c4/1441c45cb69cee327ab6e2effd16f1ef.jpg');"></div>
+                        <div class="item-details">
+                            <h4>Tripple Bacon Burger</h4>
+                            <p>Burger with 1lb Patties, 3 Thick-Cut Slices of Bacon, and Cheddar Cheese </p>
+                            <p class="price">R45</p>
+                        </div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-img" style="background-image: url('https://i.pinimg.com/736x/1d/cc/df/1dccdfae83b99a0f6de37de7b2fe7e70.jpg');"></div>
+                        <div class="item-details">
+                            <h4>Crack Burger</h4>
+                            <p>Burger with 4 slices of Crispy Bacon, 1lb Patty, Green Onions & Lettuce, 4 Slices of Cheddar Cheese, and Sour Cream</p>
+                            <p class="price">R30</p>
+                        </div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-img" style="background-image: url('https://i.pinimg.com/736x/54/72/90/547290c2314299650532a829d32bdd2a.jpg');"></div>
+                        <div class="item-details">
+                            <h4>Swiss Truffle Burger</h4>
+                            <p>Burger with Sauteed Creamy Mushrooms, Truffle oil, and Melted Swiss Cheese on Toasted Brioche</p>
+                            <p class="price">R92</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>  
+    </div>
+</section>
+<footer>
+    <div class="container">
+        <p>&copy; 2025 Aurelius Restaurant. All rights reserved.</p>
+        <div class="footer-links">
+            <a href="Home.html">Home</a>
+            <a href="Menu.html">Menu</a>
+            <a href="About Us.html">About</a>
+            <a href="Contact.html">Contact</a>
+        </div>
+    </div>
+</footer>
+</body>
+</html>

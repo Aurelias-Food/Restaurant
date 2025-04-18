@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aurelia's | Where Every Dish Is Golden</title>
+    <style>
+        /* Color Scheme */
+        :root {
+            --primary: #e63946;
+            --secondary: #1d3557;
+            --light: #f1faee;
+            --accent: #a8dadc;
+            --dark: #1a1a1a;
+        }
+
+        /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Header Styles */
+        header {
+            background: var(--secondary);
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo h1 {
+            font-size: 2rem;
+            font-family: 'Georgia', serif; /* Example font */
+            font-weight: bold;
+            font-style: italic;
+        }
+
+        .logo p {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav li {
+            margin-left: 1.5rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: all 0.3s;
+        }
+
+            nav a:hover {
+                background: rgba(255,255,255,0.1);
+            }
+
+            nav a.active {
+                background: var(--primary);
+            }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://i.pinimg.com/736x/93/60/f7/9360f70c9ecc7b88fd7964438723c57e.jpg');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 5rem 0;
+        }
+
+            .hero h2 {
+                font-size: 2.5rem;
+                margin-bottom: 1rem;
+            }
+
+            .hero p {
+                font-size: 1.2rem;
+                margin-bottom: 2rem;
+            }
+
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 1.5rem;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-weight: bold;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+            .btn:hover {
+                background: #c1121f;
+                transform: translateY(-3px);
+            }
+
+        /* Menu Section */
+        .menu-section {
+            padding: 4rem 0;
+        }
+
+            .menu-section h2 {
+                text-align: center;
+                margin-bottom: 3rem;
+                color: var(--secondary);
+            }
+
+        .menu-categories {
+            display: flex;
+            flex-direction: column;
+            gap: 3rem;
+        }
+
+        .category {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .category-header {
+            background: var(--secondary);
+            color: white;
+            padding: 1rem;
+        }
+
+            .category-header h3 {
+                font-size: 1.5rem;
+            }
+
+            .category-header a {
+                color: var(--accent);
+                text-decoration: none;
+                font-size: 0.9rem;
+                display: inline-block;
+                margin-top: 0.5rem;
+            }
+
+        .menu-items {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+            padding: 1.5rem;
+        }
+
+        .menu-item {
+            border: 1px solid #eee;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+
+            .menu-item:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            }
+
+        .item-img {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .item-details {
+            padding: 1rem;
+        }
+
+            .item-details h4 {
+                margin-bottom: 0.5rem;
+                color: var(--secondary);
+            }
+
+            .item-details p {
+                margin-bottom: 0.5rem;
+                font-size: 0.9rem;
+                color: #666;
+            }
+
+        .price {
+            font-weight: bold;
+            color: var(--primary);
+            font-size: 1.1rem;
+        }
+
+        /* Internal Navigation */
+        .category-nav {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+            .category-nav a {
+                padding: 0.5rem 1rem;
+                background: white;
+                border: 1px solid var(--secondary);
+                border-radius: 30px;
+                color: var(--secondary);
+                text-decoration: none;
+                font-weight: 500;
+                transition: all 0.3s;
+            }
+
+                .category-nav a:hover {
+                    background: var(--secondary);
+                    color: white;
+                }
+
+        /* Footer */
+        footer {
+            background: var(--secondary);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 3rem;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+            .footer-links a {
+                color: white;
+                text-decoration: none;
+            }
+
+                .footer-links a:hover {
+                    text-decoration: underline;
+                }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <h1>Aurelia's</h1>
+                <p>Where Every Dish is Golden</p>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="Menu.html">Menu</a></li>
+                    <li><a href="Meals.html" >Meals</a></li>
+                    <li><a href="Deserts.html">Deserts</a></li>
+                    <li><a href="Drinks & Baverages.html"class="active">Drinks & Baverages</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>   
+</body>
+<section id="menu" class="menu-section">
+    <div class="container">
+        <h2>Our Desert Categories</h2>
+
+        
+        <div class="category-nav">
+            <a href="#softDrinks">Soft Drinks</a>
+            <a href="#milkShakes">Milkshakes</a>
+            <a href="#coctails">Coctails</a>  
+        </div>
+
+ <!-- Soft Drinks -->
+ <div id="softDrinks" class="category">
+    <div class="category-header">
+        <h3>Soft Drinks</h3>
+        <a href="#menu">Back to top ↑</a>
+    </div>
+    <div class="menu-items">
+        <div class="menu-item">
+            <div class="item-img" style="background-image: url('https://i.pinimg.com/736x/79/6c/34/796c34906c9111f02f41a319298a261b.jpg');"></div>
+            <div class="item-details">
+                <h4>Cold Drinks</h4>
+                <p>This Includes Coca-Cola, Fanta, Pepsi,etc.</p>
+                <p class="price">R25</p>
+            </div>
+        </div>
+        <div class="menu-item">
+            <div class="item-img" style="background-image: url('https://i.pinimg.com/736x/d3/12/7e/d3127eb5ac92da5309200795980a7b13.jpg');"></div>
+            <div class="item-details">
+                <h4>Appletiser</h4>
+                <p>The Best Sparkling Juice there is</p>
+                <p class="price">R40</p>
+            </div>
+        </div>
+        <div class="menu-item">
+            <div class="item-img" style="background-image: url('https://i.pinimg.com/736x/ab/48/0d/ab480db413a3ef89bb8a8973ad860f82.jpg');"></div>
+            <div class="item-details">
+                <h4>Energy Drinks</h4>
+                <p>This Features Drinks like Monster, Redbull, Powerade, etc.</p>
+                <p class="price">R25</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+ <!-- Milk Shakes -->
+ <div id="milkShakes" class="category">
+    <div class="category-header">
+        <h3>Milk Shakes</h3>
+        <a href="#menu">Back to top ↑</a>
+    </div>
+    <div class="menu-items">
+        <div class="menu-item">
+            <div class="item-img" style="background-image: url('https://i.pinimg.com/736x/5a/31/ff/5a31ffd59839c00ef54a920eb0d879af.jpg');"></div>
+            <div class="item-details">
+                <h4>Orange Creamsicle</h4>
+                <p>A Milkshake that Combines the Flavors of Creamy Vanilla and Tangy Oranges</p>
+                <p class="price">R70</p>
+            </div>
+        </div>
+        <div class="menu-item">
+            <div class="item-img" style="background-image: url('https://i.pinimg.com/736x/ba/42/64/ba4264041d2b43a84cc3f0aebbf4d19d.jpg');"></div>
+            <div class="item-details">
+                <h4>Snickers Chocolate Milkshake</h4>
+                <p>A Chocolate Milkshake with Crushed Snickers</p>
+                <p class="price">R70</p>
+            </div>
+        </div>
+        <div class="menu-item">
+            <div class="item-img" style="background-image: url('https://i.pinimg.com/736x/24/50/97/245097928c0ea749d2664764d56cb5d8.jpg');"></div>
+            <div class="item-details">
+                <h4>Banana Milkshake</h4>
+                <p>A Thick and Creamy Milkshake with Banana and Ice Cream</p>
+                <p class="price">R45</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+ <!-- Coctails -->
+ <div id="coctails" class="category">
+    <div class="category-header">
+        <h3>Coctails</h3>
+        <a href="#menu">Back to top ↑</a>
+    </div>
+    <div class="menu-items">
+        <div class="menu-item">
+            <div class="item-img" style="background-image: url('https://i.pinimg.com/736x/d4/3e/c8/d43ec88ee5ffe2d4e5e419075e2dafe2.jpg');"></div>
+            <div class="item-details">
+                <h4>Sex on The Beach</h4>
+                <p>A Classic Coctail Featuring Vodka, Peach Schnapps with Orange and Cranberry Juice</p>
+                <p class="price">R76</p>
+            </div>
+        </div>
+        <div class="menu-item">
+            <div class="item-img" style="background-image: url('https://i.pinimg.com/736x/52/c1/aa/52c1aa411c68321d5254c468432c8413.jpg');"></div>
+            <div class="item-details">
+                <h4>Strawberry Piña Colada</h4>
+                <p>An Elagant Straberry Coctail with Strawberry and Pineapple Chunks</p>
+                <p class="price">R90</p>
+            </div>
+        </div>
+        <div class="menu-item">
+            <div class="item-img" style="background-image: url('https://i.pinimg.com/736x/51/8a/60/518a60d27c72e175021b97051bdc4e1f.jpg');"></div>
+            <div class="item-details">
+                <h4>Rosé Sangria</h4>
+                <p>A Delight Combination of the Fruity Flavors of Strawberries with the Floral Notes of Rosé Wine, and Enhanced by a Splash of Brandy and Citrus</p>
+                <p class="price">R80</p>
+            </div>
+        </div>
+        <div class="menu-item">
+            <div class="item-img" style="background-image: url('https://i.pinimg.com/736x/47/b1/02/47b102fa5086290e785f96d56ebbe325.jpg');"></div>
+            <div class="item-details">
+                <h4>Frozen Dragon Fruit Piña Colada</h4>
+                <p>A Gorgeous Dragon Fruit Coctail Topped with Strawberry, Mayberry, Raspberry and Finally Pineapple</p>
+                <p class="price">R80</p>
+            </div>
+        </div>
+        <div class="menu-item">
+            <div class="item-img" style="background-image: url('https://i.pinimg.com/736x/fe/32/30/fe3230cd23b4b1c399c0b5796bb31a80.jpg');"></div>
+            <div class="item-details">
+                <h4>Strawberry Daiquiri Coctail</h4>
+                <p>This Strawberry Daiquiri is an Icy, Fruity Mix of Fresh Berries, White Rm, and Citrus; Blended to Slushy Perfection</p>
+                <p class="price">R95</p>
+            </div>
+        </div>
+    </div>
+</div>
+<footer>
+    <div class="container">
+        <p>&copy; 2025 Aurelius Restaurant. All rights reserved.</p>
+        <div class="footer-links">
+            <a href="Home.html">Home</a>
+            <a href="Menu.html">Menu</a>
+            <a href="About Us.html">About</a>
+            <a href="Contact.html">Contact</a>
+        </div>
+    </div>
+</footer>
+</body>
+</html>
